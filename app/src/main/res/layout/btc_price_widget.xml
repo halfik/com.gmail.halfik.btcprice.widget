@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin" android:background="@android:color/transparent">
+
+    <TextView
+        android:id="@+id/bitmarket_price_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold|italic"
+        android:text="@string/btc"
+        android:contentDescription="@string/appwidget_text"
+    />
+
+    <TextView android:id="@+id/bitmarket_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/bitmarket_price_label"
+        android:textStyle="bold|italic"
+        android:text="@string/no_price"
+        android:textAlignment="viewEnd"
+        android:gravity="end"
+        android:contentDescription="@string/appwidget_text"
+        />
+
+
+    <TextView
+        android:id="@+id/bitmarket_high_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold|italic"
+        android:text="@string/high"
+        android:contentDescription="@string/appwidget_text"
+        android:textAlignment="viewEnd"
+        android:gravity="end"
+        android:layout_below="@+id/bitmarket_price"
+        />
+
+    <TextView android:id="@+id/bitmarket_high"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/bitmarket_high_label"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold|italic"
+        android:text="@string/no_high"
+        android:textAlignment="viewEnd"
+        android:gravity="end"
+        android:layout_below="@+id/bitmarket_price"
+        />
+
+    <TextView
+        android:id="@+id/bitmarket_low_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold|italic"
+        android:text="@string/low"
+        android:contentDescription="@string/appwidget_text"
+        android:layout_below="@+id/bitmarket_high"
+        />
+
+    <TextView android:id="@+id/bitmarket_low"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:layout_toRightOf="@id/bitmarket_low_label"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold|italic"
+        android:text="@string/no_low"
+        android:textAlignment="viewEnd"
+        android:gravity="end"
+        android:layout_below="@+id/bitmarket_high"
+        />
+
+
+</RelativeLayout>
