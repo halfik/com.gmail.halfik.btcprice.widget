@@ -91,10 +91,10 @@ public class BtcPriceWidget extends AppWidgetProvider
             }
             else if( Float.valueOf(number[0]) < Float.valueOf(number[1]) ){
                 color = context.getResources().getColor(R.color.red1);
-            }
 
-            if (number.length >= 3 && !number[2].isEmpty() && Float.valueOf(number[1]) < Float.valueOf(number[2])){
-                color = context.getResources().getColor(R.color.red2);
+                if (number.length >= 3 && !number[2].isEmpty() && Float.valueOf(number[1]) < Float.valueOf(number[2])){
+                    color = context.getResources().getColor(R.color.red2);
+                }
             }
         }
 
