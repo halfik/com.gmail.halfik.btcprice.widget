@@ -1,12 +1,16 @@
 package com.gmail.halfik.btcprice.widget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.gmail.halfik.btcprice.R;
 import com.gmail.halfik.btcprice.model.MarketData;
@@ -19,8 +23,7 @@ import com.gmail.halfik.btcprice.service.PollService;
 public class BtcPriceWidget extends AppWidgetProvider
 {
     private final static String TAG = "BitmarketWidget";
-    public static String TOGGLE_POLLSERVICE = "PollService";
-
+    public final static String TOGGLE_POLLSERVICE = "PollService";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -40,7 +43,7 @@ public class BtcPriceWidget extends AppWidgetProvider
 
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, Intent intent) {
         Log.i(TAG, "onReceive action: " + intent.getAction());
         if(intent.getAction().equals(TOGGLE_POLLSERVICE)) {
 
