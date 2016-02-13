@@ -7,13 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.os.PowerManager;
 import android.os.SystemClock;
 import android.util.Log;
 
 
 import com.gmail.halfik.btcprice.model.FetchData;
-import com.gmail.halfik.btcprice.model.MarketData;
+import com.gmail.halfik.btcprice.model.DataStorage;
 import com.gmail.halfik.btcprice.widget.BtcPriceWidget;
 
 import java.util.Map;
@@ -83,9 +82,9 @@ public class PollService extends IntentService
         FetchData fd = new FetchData();
         Map<String, String> newData= fd.sync();
 
-        MarketData.putPrice(this, newData.get("last"));
-        MarketData.setLow(this, newData.get("low"));
-        MarketData.setHigh(this, newData.get("high"));
+        DataStorage.putPrice(this, newData.get("last"));
+        DataStorage.setLow(this, newData.get("low"));
+        DataStorage.setHigh(this, newData.get("high"));
 
         Log.i(TAG, "New price: " + newData.get("last"));
 

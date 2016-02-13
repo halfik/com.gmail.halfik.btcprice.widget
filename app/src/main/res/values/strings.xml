@@ -3,6 +3,7 @@
     <string name="appwidget_text">Bitcoin price</string>
     <string name="add_widget">Dodaj widget</string>
     <string name="synchronize_label">Pobieraj dane co:</string>
+    <string name="font_size_label">Rozmiar czcionki:</string>
     <string name="btc">BTC:</string>
     <string name="high">HIGH:</string>
     <string name="low">LOW:</string>
@@ -10,4 +11,14 @@
     <string name="no_high">- zł</string>
     <string name="no_low">- zł</string>
     <string name="configure">Konfiguracja</string>
+
+    <string name="config_default_font_color_label">Kolor czcionki:</string>
+    <string name="config_price_up_primary_label">Główny kolor wzrostu ceny:</string>
+    <string name="config_price_up_secondary_label">Drugi kolor wzrostu ceny:</string>
+    <string name="config_price_down_primary_label">Główny kolor spadku ceny:</string>
+    <string name="config_price_down_secondary_label">Drugi kolor spadku ceny:</string>
+
+    <string name="font_small">Mała</string>
+    <string name="font_average">Średnia</string>
+    <string name="font_big">Duża</string>
 </resources>

@@ -1,19 +1,16 @@
 package com.gmail.halfik.btcprice.widget;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import com.gmail.halfik.btcprice.R;
-import com.gmail.halfik.btcprice.model.MarketData;
+import com.gmail.halfik.btcprice.model.DataStorage;
 import com.gmail.halfik.btcprice.service.PollService;
 
 /**
@@ -74,35 +71,50 @@ public class BtcPriceWidget extends AppWidgetProvider
     private static RemoteViews  setPrices(Context context){
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.btc_price_widget);
 
-        String[] number =  MarketData.getStoredPrice(context).split(MarketData.PRICE_SEPARATOR);;
-        String highNumber =  MarketData.getStoredHigh(context);
-        String lowNumber =  MarketData.getStoredLow(context);
+        String[] number =  DataStorage.getStoredPrice(context).split(DataStorage.PRICE_SEPARATOR);;
+        String highNumber =  DataStorage.getStoredHigh(context);
+        String lowNumber =  DataStorage.getStoredLow(context);
 
 
         String[] price = number[0].split("\\.");
         String[] high = highNumber.split("\\.");
         String[] low = lowNumber.split("\\.");
 
-        int color =  context.getResources().getColor(R.color.white);
+        int color =  DataStorage.getStoredDefaultFontColor(context);
         if (number.length > 2 && !number[1].isEmpty()){
             if ( Float.valueOf(number[0]) > Float.valueOf(number[1]) ){
-                color = context.getResources().getColor(R.color.green1);
+                color = DataStorage.getStoredPriceUpPrimaryColor(context);
 
                 if (number.length > 3 && !number[2].isEmpty() && Float.valueOf(number[1]) > Float.valueOf(number[2])){
-                    color = context.getResources().getColor(R.color.green2);
+                    color = DataStorage.getStoredPriceUpSecondaryColor(context);
                 }
             }
             else if( Float.valueOf(number[0]) < Float.valueOf(number[1]) ){
-                color = context.getResources().getColor(R.color.red1);
+                color = DataStorage.getStoredPriceDownPrimaryColor(context);
 
                 if (number.length >= 3 && !number[2].isEmpty() && Float.valueOf(number[1]) < Float.valueOf(number[2])){
-                    color = context.getResources().getColor(R.color.red2);
+                    color = DataStorage.getStoredPriceDownSecondaryColor(context);
                 }
             }
         }
 
+        views.setTextViewTextSize(R.id.bitmarket_high_label, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
+        views.setTextViewTextSize(R.id.bitmarket_price_label, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
+        views.setTextViewTextSize(R.id.bitmarket_low_label, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
+        views.setTextViewTextSize(R.id.bitmarket_price, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
+        views.setTextViewTextSize(R.id.bitmarket_high, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
+        views.setTextViewTextSize(R.id.bitmarket_low, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
+
+
+
 
         views.setTextColor(R.id.bitmarket_price, color);
+        views.setTextColor(R.id.bitmarket_high, DataStorage.getStoredDefaultFontColor(context));
+        views.setTextColor(R.id.bitmarket_low, DataStorage.getStoredDefaultFontColor(context));
+
+        views.setTextColor(R.id.bitmarket_high_label, DataStorage.getStoredDefaultFontColor(context));
+        views.setTextColor(R.id.bitmarket_price_label, DataStorage.getStoredDefaultFontColor(context));
+        views.setTextColor(R.id.bitmarket_low_label, DataStorage.getStoredDefaultFontColor(context));
 
         if (price[0].isEmpty()){
             price[0] = "-";
