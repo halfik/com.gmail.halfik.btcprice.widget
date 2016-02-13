@@ -16,26 +16,185 @@
         android:id="@+id/spinnerLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/synchronize_label"
         android:layout_below="@+id/titleTextView" />
 
     <Spinner
         android:id="@+id/time_spinner"
         android:layout_below="@+id/spinnerLabelTextView"
-        android:layout_width="326dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
         />
 
-    <Button
-        android:id="@+id/add_button"
+    <TextView
+        android:id="@+id/fontSizeSpinnerLabelTextView"
         android:layout_below="@+id/time_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/font_size_label"
+         />
+
+    <Spinner
+        android:id="@+id/font_size_spinner"
+        android:layout_below="@+id/fontSizeSpinnerLabelTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        />
+
+    <RelativeLayout
+        android:id="@+id/defaultColorLayout"
+        android:layout_below="@+id/font_size_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/defaultFontColorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/config_default_font_color_label"/>
+
+        <TextView
+            android:id="@+id/defaultFontColor"
+            android:layout_alignBottom="@+id/defaultFontColorLabel"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:layout_width="@dimen/price_color_width"
+            android:contextClickable="true"
+            android:background="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="20dp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/priceUpPrimaryLayout"
+        android:layout_below="@+id/defaultColorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/priceUpPrimaryColorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/config_price_up_primary_label"/>
+
+        <TextView
+            android:id="@+id/priceUpPrimaryColor"
+            android:layout_alignBottom="@+id/priceUpPrimaryColorLabel"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:layout_width="@dimen/price_color_width"
+            android:contextClickable="true"
+            android:background="@color/green1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="20dp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/priceUpSecondaryLayout"
+        android:layout_below="@+id/priceUpPrimaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/priceUpSecondaryColorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/config_price_up_secondary_label"/>
+
+        <TextView
+            android:id="@+id/priceUpSecondaryColor"
+            android:layout_alignBottom="@+id/priceUpSecondaryColorLabel"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:layout_width="@dimen/price_color_width"
+            android:contextClickable="true"
+            android:background="@color/green2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="20dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/priceDownPrimaryLayout"
+        android:layout_below="@+id/priceUpSecondaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/priceDownPrimaryColorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/config_price_down_primary_label"/>
+
+
+
+        <TextView
+            android:id="@+id/priceDownPrimaryColor"
+            android:background="@color/red1"
+            android:layout_width="@dimen/price_color_width"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:layout_alignBottom="@+id/priceDownPrimaryColorLabel"
+            android:contextClickable="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/priceDownSecondaryLayout"
+        android:layout_below="@+id/priceDownPrimaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/priceDownSecondaryColorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/config_price_down_secondary_label"/>
+
+        <TextView
+            android:id="@+id/priceDownSecondaryColor"
+            android:background="@color/red2"
+            android:layout_width="@dimen/price_color_width"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:layout_alignBottom="@+id/priceDownSecondaryColorLabel"
+            android:contextClickable="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/add_widget"
-        android:layout_marginTop="8dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 
