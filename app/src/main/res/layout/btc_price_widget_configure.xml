@@ -45,148 +45,150 @@
         android:spinnerMode="dropdown"
         />
 
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/defaultColorLayout"
-        android:layout_below="@+id/font_size_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        >
+        android:layout_below="@+id/font_size_spinner"
+        android:weightSum="100">
 
         <TextView
             android:id="@+id/defaultFontColorLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:text="@string/config_default_font_color_label"/>
 
         <TextView
             android:id="@+id/defaultFontColor"
-            android:layout_alignBottom="@+id/defaultFontColorLabel"
-            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
-            android:layout_width="@dimen/price_color_width"
+            android:layout_width="0dp"
             android:contextClickable="true"
+            android:layout_weight="30"
             android:background="@color/white"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_height="20dp" />
-    </RelativeLayout>
+    </LinearLayout>
 
 
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/priceUpPrimaryLayout"
-        android:layout_below="@+id/defaultColorLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        >
+        android:layout_below="@+id/defaultColorLayout"
+        android:weightSum="100">
 
         <TextView
             android:id="@+id/priceUpPrimaryColorLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:text="@string/config_price_up_primary_label"/>
 
         <TextView
             android:id="@+id/priceUpPrimaryColor"
-            android:layout_alignBottom="@+id/priceUpPrimaryColorLabel"
-            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
-            android:layout_width="@dimen/price_color_width"
+            android:layout_width="0dp"
+            android:layout_weight="30"
             android:contextClickable="true"
             android:background="@color/green1"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_height="20dp" />
-    </RelativeLayout>
+    </LinearLayout>
 
 
-    <RelativeLayout
+
+
+    <LinearLayout
         android:id="@+id/priceUpSecondaryLayout"
-        android:layout_below="@+id/priceUpPrimaryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        >
+        android:layout_below="@+id/priceUpPrimaryLayout"
+        android:weightSum="100">
 
         <TextView
             android:id="@+id/priceUpSecondaryColorLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:text="@string/config_price_up_secondary_label"/>
 
         <TextView
             android:id="@+id/priceUpSecondaryColor"
-            android:layout_alignBottom="@+id/priceUpSecondaryColorLabel"
-            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
-            android:layout_width="@dimen/price_color_width"
+            android:layout_width="0dp"
             android:contextClickable="true"
+            android:layout_weight="30"
             android:background="@color/green2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_height="20dp" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/priceDownPrimaryLayout"
-        android:layout_below="@+id/priceUpSecondaryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        >
+        android:layout_below="@+id/priceUpSecondaryLayout"
+        android:weightSum="100">
 
         <TextView
             android:id="@+id/priceDownPrimaryColorLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="70"
             android:layout_height="wrap_content"
             android:text="@string/config_price_down_primary_label"/>
-
 
 
         <TextView
             android:id="@+id/priceDownPrimaryColor"
             android:background="@color/red1"
-            android:layout_width="@dimen/price_color_width"
+            android:layout_width="0dp"
+            android:layout_weight="30"
             android:layout_height="20dp"
             android:gravity="center_vertical"
-            android:layout_alignBottom="@+id/priceDownPrimaryColorLabel"
             android:contextClickable="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
+            />
+    </LinearLayout>
 
 
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/priceDownSecondaryLayout"
-        android:layout_below="@+id/priceDownPrimaryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        >
-
+        android:layout_below="@+id/priceDownPrimaryLayout"
+        android:weightSum="100">
         <TextView
             android:id="@+id/priceDownSecondaryColorLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="70"
             android:layout_height="wrap_content"
             android:text="@string/config_price_down_secondary_label"/>
 
         <TextView
             android:id="@+id/priceDownSecondaryColor"
             android:background="@color/red2"
-            android:layout_width="@dimen/price_color_width"
+            android:layout_width="0dp"
             android:layout_height="20dp"
             android:gravity="center_vertical"
-            android:layout_alignBottom="@+id/priceDownSecondaryColorLabel"
             android:contextClickable="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
+            android:layout_weight="30" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/add_button"
