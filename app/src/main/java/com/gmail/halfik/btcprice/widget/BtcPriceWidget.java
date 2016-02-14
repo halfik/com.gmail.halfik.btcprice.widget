@@ -5,13 +5,22 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.util.TypedValue;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.gmail.halfik.btcprice.R;
 import com.gmail.halfik.btcprice.model.DataStorage;
 import com.gmail.halfik.btcprice.service.PollService;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Implementation of App Widget functionality.
@@ -21,12 +30,18 @@ public class BtcPriceWidget extends AppWidgetProvider
 {
     private final static String TAG = "BitmarketWidget";
     public final static String TOGGLE_POLLSERVICE = "PollService";
+    Context mContext;
+
+
+
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int N = appWidgetIds.length;
+        mContext = context;
 
         PollService.setServiceAlarm(context, true);
+
 
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
@@ -37,7 +52,6 @@ public class BtcPriceWidget extends AppWidgetProvider
             appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
         }
     }
-
 
     @Override
     public void onReceive(final Context context, Intent intent) {

@@ -44,7 +44,13 @@ public class PollService extends IntentService
                 alarmManager.cancel(pi);
             }
 
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), getInterval(context), pi);
+            if (DataStorage.getStoredHigh(context).equals("-")){
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), 2*1000, pi);
+            }else{
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), getInterval(context), pi);
+            }
+
+
             Log.i(TAG, "Interval: " +  getInterval(context)/(60*1000));
         }else{
             alarmManager.cancel(pi);
@@ -58,7 +64,6 @@ public class PollService extends IntentService
 
     private static long getInterval(Context context){
         SharedPreferences settings = PollService.getSharedPreferences(context);
-        //return 10 * 1000;
         return (long) settings.getInt(SETTING_SERVICE_TIME, 15) * 60 * 1000;
     }
 
@@ -78,7 +83,7 @@ public class PollService extends IntentService
         fetchData();
     }
 
-    private void fetchData(){
+    public void fetchData(){
         FetchData fd = new FetchData();
         Map<String, String> newData= fd.sync();
 
@@ -99,7 +104,7 @@ public class PollService extends IntentService
         }
     }
 
-    private boolean isNetworkAvaibleAndConnected(){
+    public boolean isNetworkAvaibleAndConnected(){
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 
         boolean isNetworkAvaible = cm.getActiveNetworkInfo() != null;
