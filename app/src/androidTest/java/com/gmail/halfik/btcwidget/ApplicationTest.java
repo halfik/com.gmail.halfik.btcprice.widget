@@ -1,4 +1,4 @@
-package com.gmail.halfik.btcprice;
+package com.gmail.halfik.btcwidget;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

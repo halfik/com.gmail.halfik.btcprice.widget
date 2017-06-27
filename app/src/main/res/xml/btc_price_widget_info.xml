@@ -3,6 +3,6 @@
     android:minWidth="40dp" android:minHeight="40dp" android:updatePeriodMillis="86400000"
     android:previewImage="@drawable/bitcoin"
     android:initialLayout="@layout/btc_price_widget"
-    android:configure="com.gmail.halfik.btcprice.widget.BtcPriceWidgetConfigureActivity"
+    android:configure="com.gmail.halfik.btcwidget.widget.BtcPriceWidgetConfigureActivity"
     android:resizeMode="horizontal|vertical" android:widgetCategory="home_screen"
     android:initialKeyguardLayout="@layout/btc_price_widget"></appwidget-provider>

@@ -1,4 +1,4 @@
-package com.gmail.halfik.btcprice;
+package com.gmail.halfik.btcwidget;
 
 import org.junit.Test;
 

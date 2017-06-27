@@ -1,26 +1,17 @@
-package com.gmail.halfik.btcprice.widget;
+package com.gmail.halfik.btcwidget.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.util.TypedValue;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
-import com.gmail.halfik.btcprice.R;
-import com.gmail.halfik.btcprice.model.DataStorage;
-import com.gmail.halfik.btcprice.service.PollService;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.gmail.halfik.btcwidget.R;
+import com.gmail.halfik.btcwidget.model.DataStorage;
+import com.gmail.halfik.btcwidget.service.PollService;
 
 /**
  * Implementation of App Widget functionality.
