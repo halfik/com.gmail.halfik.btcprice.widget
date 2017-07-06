@@ -37,7 +37,7 @@ public class FetchData
             Log.e(TAG, "failed to fetch items", ioe);
         }
 
-        return null;
+        return new HashMap<>();
     }
 
     private Map<String, String> parseData(JSONObject jsonBody) throws JSONException{

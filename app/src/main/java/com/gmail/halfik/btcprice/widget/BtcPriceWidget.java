@@ -32,18 +32,11 @@ public class BtcPriceWidget extends AppWidgetProvider
     public final static String TOGGLE_POLLSERVICE = "PollService";
     Context mContext;
 
-
-
-
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int N = appWidgetIds.length;
         mContext = context;
-
-        PollService.setServiceAlarm(context, true);
-
-
-        for (int i=0; i<N; i++) {
+        for(int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.btc_price_widget);
 
@@ -51,13 +44,13 @@ public class BtcPriceWidget extends AppWidgetProvider
 
             appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
         }
+        PollService.setServiceAlarm(context, true);
     }
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         Log.i(TAG, "onReceive action: " + intent.getAction());
         if(intent.getAction().equals(TOGGLE_POLLSERVICE)) {
-
             RemoteViews views = setPrices(context);
 
             // Push update for this widget to the home screen
@@ -65,6 +58,10 @@ public class BtcPriceWidget extends AppWidgetProvider
             AppWidgetManager manager = AppWidgetManager.getInstance(context);
             manager.updateAppWidget(thisWidget, views);
         }
+        else if(intent.getAction().equals("android.appwidget.action.APPWIDGET_ENABLED")){
+            PollService.setServiceAlarm(context, true);
+        }
+
         super.onReceive(context, intent);
     }
 
@@ -79,16 +76,14 @@ public class BtcPriceWidget extends AppWidgetProvider
         if (PollService.isServiceAlarmOn(context)){
             PollService.setServiceAlarm(context, false);
         }
-
     }
 
-    private static RemoteViews  setPrices(Context context){
+    private static RemoteViews setPrices(Context context){
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.btc_price_widget);
 
         String[] number =  DataStorage.getStoredPrice(context).split(DataStorage.PRICE_SEPARATOR);;
         String highNumber =  DataStorage.getStoredHigh(context);
         String lowNumber =  DataStorage.getStoredLow(context);
-
 
         String[] price = number[0].split("\\.");
         String[] high = highNumber.split("\\.");
@@ -119,9 +114,6 @@ public class BtcPriceWidget extends AppWidgetProvider
         views.setTextViewTextSize(R.id.bitmarket_high, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
         views.setTextViewTextSize(R.id.bitmarket_low, TypedValue.COMPLEX_UNIT_SP, DataStorage.getStoredFontSize(context));
 
-
-
-
         views.setTextColor(R.id.bitmarket_price, color);
         views.setTextColor(R.id.bitmarket_high, DataStorage.getStoredDefaultFontColor(context));
         views.setTextColor(R.id.bitmarket_low, DataStorage.getStoredDefaultFontColor(context));
@@ -143,9 +135,7 @@ public class BtcPriceWidget extends AppWidgetProvider
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         // Construct the RemoteViews object
-
         RemoteViews views = setPrices(context);
-
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

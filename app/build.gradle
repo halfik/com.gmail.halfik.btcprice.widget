@@ -8,8 +8,8 @@ android {
         applicationId "com.gmail.halfik.btcprice"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 3
-        versionName "1.6"
+        versionCode 4
+        versionName "1.7"
     }
     buildTypes {
         release {
@@ -30,6 +30,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.commonsware.cwac:wakeful:1.0.+'
+    compile 'com.commonsware.cwac:wakeful:1.1.0'
     compile "com.github.danielnilsson9:color-picker-view:1.4.0@aar"
 }

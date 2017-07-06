@@ -10,7 +10,6 @@ import android.net.ConnectivityManager;
 import android.os.SystemClock;
 import android.util.Log;
 
-
 import com.gmail.halfik.btcprice.model.FetchData;
 import com.gmail.halfik.btcprice.model.DataStorage;
 import com.gmail.halfik.btcprice.widget.BtcPriceWidget;
@@ -49,8 +48,6 @@ public class PollService extends IntentService
             }else{
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), getInterval(context), pi);
             }
-
-
             Log.i(TAG, "Interval: " +  getInterval(context)/(60*1000));
         }else{
             alarmManager.cancel(pi);
@@ -79,7 +76,6 @@ public class PollService extends IntentService
         if(!isNetworkAvaibleAndConnected()){
             return;
         }
-
         fetchData();
     }
 
@@ -87,11 +83,12 @@ public class PollService extends IntentService
         FetchData fd = new FetchData();
         Map<String, String> newData= fd.sync();
 
-        DataStorage.putPrice(this, newData.get("last"));
-        DataStorage.setLow(this, newData.get("low"));
-        DataStorage.setHigh(this, newData.get("high"));
-
-        Log.i(TAG, "New price: " + newData.get("last"));
+        if(newData.containsKey("last")){
+            DataStorage.putPrice(this, newData.get("last"));
+            DataStorage.setLow(this, newData.get("low"));
+            DataStorage.setHigh(this, newData.get("high"));
+            Log.i(TAG, "New price: " + newData.get("last"));
+        }
 
         Intent newIntent = new Intent(this, BtcPriceWidget.class);
         newIntent.setAction(BtcPriceWidget.TOGGLE_POLLSERVICE);
@@ -100,13 +97,16 @@ public class PollService extends IntentService
         try{
             pendingIntent.send();
         }catch (Exception e){
-
+            Log.i(TAG, "Pending intent e: " + e.getMessage());
         }
     }
 
     public boolean isNetworkAvaibleAndConnected(){
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 
+        if (cm == null){
+            return false;
+        }
         boolean isNetworkAvaible = cm.getActiveNetworkInfo() != null;
         boolean isNetworkConneted = isNetworkAvaible && cm.getActiveNetworkInfo().isConnected();
 
