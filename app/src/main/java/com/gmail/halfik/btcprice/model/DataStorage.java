@@ -1,11 +1,12 @@
-package com.gmail.halfik.btcwidget.model;
+package com.gmail.halfik.btcprice.model;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
-import com.gmail.halfik.btcwidget.R;
+import com.gmail.halfik.btcprice.R;
 
 public class DataStorage
 {

@@ -1,4 +1,4 @@
-package com.gmail.halfik.btcwidget.widget;
+package com.gmail.halfik.btcprice.widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -8,18 +8,26 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.github.danielnilsson9.colorpickerview.dialog.ColorPickerDialogFragment;
-import com.gmail.halfik.btcwidget.R;
-import com.gmail.halfik.btcwidget.model.DataStorage;
-import com.gmail.halfik.btcwidget.service.PollService;
+import com.gmail.halfik.btcprice.R;
+import com.gmail.halfik.btcprice.model.DataStorage;
+import com.gmail.halfik.btcprice.service.PollService;
 
+import org.w3c.dom.Text;
+
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 

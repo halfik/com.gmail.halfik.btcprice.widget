@@ -1,4 +1,4 @@
-package com.gmail.halfik.btcwidget.model;
+package com.gmail.halfik.btcprice.model;
 
 
 import android.net.Uri;
@@ -37,7 +37,7 @@ public class FetchData
             Log.e(TAG, "failed to fetch items", ioe);
         }
 
-        return new HashMap<>();
+        return null;
     }
 
     private Map<String, String> parseData(JSONObject jsonBody) throws JSONException{
