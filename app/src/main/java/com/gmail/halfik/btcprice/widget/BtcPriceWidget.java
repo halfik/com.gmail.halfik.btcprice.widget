@@ -36,6 +36,7 @@ public class BtcPriceWidget extends AppWidgetProvider
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int N = appWidgetIds.length;
         mContext = context;
+        PollService.setServiceAlarm(context, true);
         for(int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.btc_price_widget);
@@ -44,7 +45,6 @@ public class BtcPriceWidget extends AppWidgetProvider
 
             appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
         }
-        PollService.setServiceAlarm(context, true);
     }
 
     @Override
@@ -96,13 +96,6 @@ public class BtcPriceWidget extends AppWidgetProvider
 
                 if (number.length > 3 && !number[2].isEmpty() && Float.valueOf(number[1]) > Float.valueOf(number[2])){
                     color = DataStorage.getStoredPriceUpSecondaryColor(context);
-                }
-            }
-            else if( Float.valueOf(number[0]) < Float.valueOf(number[1]) ){
-                color = DataStorage.getStoredPriceDownPrimaryColor(context);
-
-                if (number.length >= 3 && !number[2].isEmpty() && Float.valueOf(number[1]) < Float.valueOf(number[2])){
-                    color = DataStorage.getStoredPriceDownSecondaryColor(context);
                 }
             }
         }

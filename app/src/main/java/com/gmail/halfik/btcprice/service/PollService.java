@@ -42,9 +42,9 @@ public class PollService extends IntentService
             if (PollService.isServiceAlarmOn(context)){
                 alarmManager.cancel(pi);
             }
-
+            Log.i(TAG, "Data store context on set alarm: " + DataStorage.getStoredHigh(context));
             if (DataStorage.getStoredHigh(context).equals("-")){
-                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), 2*1000, pi);
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), 10*1000, pi);
             }else{
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), getInterval(context), pi);
             }
@@ -105,6 +105,7 @@ public class PollService extends IntentService
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 
         if (cm == null){
+            Log.i(TAG, "no ConnectivityManager");
             return false;
         }
         boolean isNetworkAvaible = cm.getActiveNetworkInfo() != null;
