@@ -32,6 +32,7 @@ public class BtcPriceWidget extends AppWidgetProvider
     public final static String TOGGLE_POLLSERVICE = "PollService";
     Context mContext;
 
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int N = appWidgetIds.length;
@@ -40,9 +41,7 @@ public class BtcPriceWidget extends AppWidgetProvider
         for(int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.btc_price_widget);
-
             updateAppWidget(context, appWidgetManager, appWidgetId);
-
             appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
         }
     }
@@ -81,7 +80,7 @@ public class BtcPriceWidget extends AppWidgetProvider
     private static RemoteViews setPrices(Context context){
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.btc_price_widget);
 
-        String[] number =  DataStorage.getStoredPrice(context).split(DataStorage.PRICE_SEPARATOR);;
+        String[] number =  DataStorage.getStoredPrice(context).split(DataStorage.PRICE_SEPARATOR);
         String highNumber =  DataStorage.getStoredHigh(context);
         String lowNumber =  DataStorage.getStoredLow(context);
 
@@ -122,7 +121,7 @@ public class BtcPriceWidget extends AppWidgetProvider
         views.setTextViewText(R.id.bitmarket_price, price[0] + " zł");
         views.setTextViewText(R.id.bitmarket_high, high[0] + " zł");
         views.setTextViewText(R.id.bitmarket_low, low[0] + " zł");
-
+        Log.i(TAG, "Set new view prices: " + price[0]);
         return views;
     }
 

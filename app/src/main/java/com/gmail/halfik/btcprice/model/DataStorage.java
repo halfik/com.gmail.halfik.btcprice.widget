@@ -5,11 +5,14 @@ import android.content.Context;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.gmail.halfik.btcprice.R;
 
 public class DataStorage
 {
+    private static final String TAG = "DataStorage";
+
     private static final String PREF_PRICE = "price";
     private static final String PREF_LOW = "low";
     private static final String PREF_HIGH = "high";
@@ -40,7 +43,7 @@ public class DataStorage
         for(int i=0; i<max; i++){
             newPrices[i+1] = prices[i];
         }
-
+        Log.i(TAG, "Data to be stored" +  TextUtils.join(PRICE_SEPARATOR, newPrices));
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putString(PREF_PRICE, TextUtils.join(PRICE_SEPARATOR, newPrices))

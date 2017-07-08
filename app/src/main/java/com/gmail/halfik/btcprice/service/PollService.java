@@ -44,12 +44,13 @@ public class PollService extends IntentService
             }
             Log.i(TAG, "Data store context on set alarm: " + DataStorage.getStoredHigh(context));
             if (DataStorage.getStoredHigh(context).equals("-")){
-                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), 10*1000, pi);
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), 2*1000, pi);
             }else{
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP , SystemClock.elapsedRealtime(), getInterval(context), pi);
             }
             Log.i(TAG, "Interval: " +  getInterval(context)/(60*1000));
         }else{
+            Log.i(TAG, "Cancel alarm " +  isOn);
             alarmManager.cancel(pi);
             pi.cancel();
         }
@@ -67,7 +68,7 @@ public class PollService extends IntentService
     public static boolean isServiceAlarmOn(Context context){
         Intent i = PollService.newIntent(context);
         PendingIntent pi = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_NO_CREATE);
-
+        Log.i(TAG, "Is service alarm on " +  (pi != null));
         return pi != null;
     }
 
@@ -82,7 +83,7 @@ public class PollService extends IntentService
     public void fetchData(){
         FetchData fd = new FetchData();
         Map<String, String> newData= fd.sync();
-
+        Log.i(TAG, "poll service fetched new data: " + newData.toString());
         if(newData.containsKey("last")){
             DataStorage.putPrice(this, newData.get("last"));
             DataStorage.setLow(this, newData.get("low"));
@@ -110,7 +111,7 @@ public class PollService extends IntentService
         }
         boolean isNetworkAvaible = cm.getActiveNetworkInfo() != null;
         boolean isNetworkConneted = isNetworkAvaible && cm.getActiveNetworkInfo().isConnected();
-
+        Log.i(TAG, "is network avaiable " + isNetworkConneted);
         return isNetworkConneted;
     }
 }
